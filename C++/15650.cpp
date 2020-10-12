@@ -37,7 +37,7 @@ void f(int pos)
 int main()
 {
     scanf("%d %d", &n, &m);
-
+    
     f(0);
 
     return 0;
