@@ -31,7 +31,7 @@ def gaussJordan(A):
     for j in range(n-1, 0, -1):
         for i in range(j-1, -1, -1):
             lam = A[i,j] / A[j,j]
-            A[i,:] = A[i,:] - lam * A[j, :]
+            A[i,j] = A[i,j] - lam * A[j, j]
             E[i, :] = E[i, :] - lam * E[j, :]
     
     for j in range(0, n):
