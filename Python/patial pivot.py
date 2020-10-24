@@ -8,6 +8,19 @@ def gaussElimin(A, b):
     n = len(b);
     #상삼각 행렬(사다리꼴 행렬)
     for j in range(0, n-1):
+        #부분 피봇
+        max = np.abs(A[j,j])
+        for k in range(j+1, n):
+            temp = np.abs(A[k,j])
+            if max < temp:
+                max = temp
+                l = k
+        if max != np.abs(A[j,j]):
+            temp = np.copy(A[j, :]); tempb = np.copy(b[j])
+            A[j, :] = np.copy(A[l, :]); b[j] = np.copy(b[l])
+            A[l, :] = temp; b[l] = tempb
+        print(A); print(b)
+
         # 피봇이 0인지 체크
         if np.abs(A[j, j] - 0.0) < sys.float_info.epsilon:
             for k in range(j+1, n):
@@ -16,6 +29,7 @@ def gaussElimin(A, b):
                     A[k, :] = A[j, :]; b[k] = b[j]
                     A[j, :] = temp; b[j] = tempb
                     break
+
         for i in range(j+1, n):
             lam = A[i,j] / A[j,j]
             # A[i, j+1 : n] = A[i, j+1 : n] - lam * A[j, j+1 :n]
@@ -23,8 +37,8 @@ def gaussElimin(A, b):
             b[i] = b[i] - lam * b[j]
 
     # 이 부분은 확인 부분이므로 생략 가능
-    print(A)
-    print(b)
+        print(A)
+        print(b)
 
     # 해의 존재 유무 확인
     if (np.prod(np.diag(np.abs(A))) - 0.0) < sys.float_info.epsilon:
@@ -39,6 +53,7 @@ def gaussElimin(A, b):
                         #내적
 
     return x
+
 
 A = np.array([[1.0, -3.0, 3.0], [-3.0, 2.0, 3.0], [-1.0, 2.0, -1.0]])
 b = np.array([[-6.0], [-13.0], [3.0]])

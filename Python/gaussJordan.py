@@ -9,19 +9,6 @@ def gaussJordan(A):
     E = np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]])
     #상삼각 행렬(사다리꼴 행렬)
     for j in range(0, n-1):
-        #부분 피봇
-        if j == 0:
-            max = np.abs(A[j,j])
-            for k in range(j+1, n):
-                temp = np.abs(A[k,j])
-                if max < temp:
-                    max = temp
-                    l = k
-            if max != np.abs(A[j,j]):
-                temp = np.copy(A[j, :]); tempE = np.copy(E[j, :])
-                A[j, :] = np.copy(A[l, :]); E[j] = np.copy(E[l, :])
-                A[l, :] = temp; E[l, :] = tempE
-
         # 피봇이 0인지 체크
         if np.abs(A[j, j] - 0.0) < sys.float_info.epsilon:
             for k in range(j+1, n):
@@ -63,3 +50,9 @@ def gaussJordan(A):
     print(R);
 
     return E
+
+A = np.array([[1.0, 3.0, -2.0], [2.0, 6.0, -2.0], [0.0, 1.0, 1.0]])
+
+X = gaussJordan(A)
+
+print(X)
