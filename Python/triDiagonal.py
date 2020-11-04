@@ -12,11 +12,6 @@ def triDiagonal(A, b):
         A[j+1, j] = 0.0
         A[j+1, j+1] = A[j+1, j+1] - lam * A[j, j+1]
         b[j+1] = b[j+1] - lam * b[j]
-        # for i in range(j+1, n):
-        #     lam = A[i,j] / A[j,j]
-        #     # A[i, j+1 : n] = A[i, j+1 : n] - lam * A[j, j+1 :n]
-        #     A[i,:] = A[i,:] - lam * A[j, :]
-        #     b[i] = b[i] - lam * b[j]
 
     # 이 부분은 확인 부분이므로 생략 가능
     print(A)
