@@ -24,5 +24,4 @@ int main()
     printf("%d\n", mx);
     
     return 0;
-//commit test 2
 }
